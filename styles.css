@@ -163,9 +163,7 @@ nav a:hover {
 
 
 .gallery {
-
     display: grid;
-    width: 220px;
 }
 
 .gallery>img {
