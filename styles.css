@@ -164,13 +164,17 @@ nav a:hover {
 
 .gallery {
     display: grid;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
 .gallery>img {
     grid-area: 1/1;
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
+    height: 100vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
     border: 10px solid #f2f2f2;
     box-shadow: 0 0 4px #0007;
     animation: slide 6s infinite;
