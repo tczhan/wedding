@@ -40,42 +40,11 @@
         </div>
     </section>
 
-    <section>
-        <h2>RSVP</h2>
-        <form class="rsvp" name="rsvp-form" netlify>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="3" placeholder="Your message or song request"></textarea>
-            <button type="submit">Send RSVP</button>
-        </form>
-    </section>
-
     <footer>
         <p>Made with ❤️ by Teresa & Darin</p>
     </footer>
 
     <script>
-        // Countdown Timer
-        const countdown = document.getElementById('countdown');
-        const weddingDate = new Date('June 14, 2026 00:00:00').getTime();
-
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            if (distance < 0) {
-                countdown.innerHTML = "🎉 The big day is here!";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }, 1000);
-
         // Heart cursor effect
         document.addEventListener('mousemove', e => {
             const heart = document.createElement('div');
@@ -85,33 +54,6 @@
             heart.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 1000);
-        });
-    </script>
-    <!-- Popup Modal -->
-    <div id="rsvp-popup" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-popup" class="close">&times;</span>
-            <h2>RSVP Coming Soon 🎉</h2>
-            <p>We can't wait to celebrate with you! Check back later for updates.</p>
-        </div>
-    </div>
-
-    <script>
-        const popup = document.getElementById('rsvp-popup');
-        const closeBtn = document.getElementById('close-popup');
-        const rsvpBtn = document.querySelector('nav ul li:last-child a');
-
-        rsvpBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            popup.classList.remove('hidden');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            popup.classList.add('hidden');
-        });
-
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) popup.classList.add('hidden');
         });
     </script>
 </body>
