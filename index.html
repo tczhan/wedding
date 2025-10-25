@@ -1,115 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Wedding</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <nav>
-    <ul>
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
-    </ul>
-  </nav>
-  <header>
+    <nav>
+        <ul>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+    <!-- <header>
     <h1>Teresa & Darin</h1>
     <p>Join us in celebrating our love on <strong>June 14, 2026</strong></p>
     <div class="countdown" id="countdown"></div>
-  </header>
+  </header> -->
 
-  <section>
+    <!-- <section>
     <h2>Our Story</h2>
     <p>It all began with coffee and laughter — now, we’re tying the knot! Come celebrate our colorful journey with us.</p>
-  </section>
+  </section> -->
 
-  <section>
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Couple">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Sunset">
-      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Flowers">
+    <section>
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="images/td_engagement-050.jpg">
+            <img src="images/td_engagement-017.jpg">
+            <img src="images/td_engagement-072.jpg">
+            <img src="images/td_engagement-089.jpg">
+        </div>
+    </section>
+
+    <section>
+        <h2>RSVP</h2>
+        <form class="rsvp" name="rsvp-form" netlify>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="3" placeholder="Your message or song request"></textarea>
+            <button type="submit">Send RSVP</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ by Teresa & Darin</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const countdown = document.getElementById('countdown');
+        const weddingDate = new Date('June 14, 2026 00:00:00').getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                countdown.innerHTML = "🎉 The big day is here!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+
+        // Heart cursor effect
+        document.addEventListener('mousemove', e => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = e.pageX + 'px';
+            heart.style.top = e.pageY + 'px';
+            heart.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+    </script>
+    <!-- Popup Modal -->
+    <div id="rsvp-popup" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-popup" class="close">&times;</span>
+            <h2>RSVP Coming Soon 🎉</h2>
+            <p>We can't wait to celebrate with you! Check back later for updates.</p>
+        </div>
     </div>
-  </section>
 
-  <section>
-    <h2>RSVP</h2>
-    <form class="rsvp" name="rsvp-form" netlify>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="3" placeholder="Your message or song request"></textarea>
-      <button type="submit">Send RSVP</button>
-    </form>
-  </section>
+    <script>
+        const popup = document.getElementById('rsvp-popup');
+        const closeBtn = document.getElementById('close-popup');
+        const rsvpBtn = document.querySelector('nav ul li:last-child a');
 
-  <footer>
-    <p>Made with ❤️ by Teresa & Darin</p>
-  </footer>
+        rsvpBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            popup.classList.remove('hidden');
+        });
 
-  <script>
-    // Countdown Timer
-    const countdown = document.getElementById('countdown');
-    const weddingDate = new Date('June 14, 2026 00:00:00').getTime();
+        closeBtn.addEventListener('click', () => {
+            popup.classList.add('hidden');
+        });
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      if (distance < 0) {
-        countdown.innerHTML = "🎉 The big day is here!";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-
-    // Heart cursor effect
-    document.addEventListener('mousemove', e => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = e.pageX + 'px';
-      heart.style.top = e.pageY + 'px';
-      heart.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 1000);
-    });
-  </script>
-  <!-- Popup Modal -->
-  <div id="rsvp-popup" class="modal hidden">
-    <div class="modal-content">
-      <span id="close-popup" class="close">&times;</span>
-      <h2>RSVP Coming Soon 🎉</h2>
-      <p>We can't wait to celebrate with you! Check back later for updates.</p>
-    </div>
-  </div>
-
-  <script>
-    const popup = document.getElementById('rsvp-popup');
-    const closeBtn = document.getElementById('close-popup');
-    const rsvpBtn = document.querySelector('nav ul li:last-child a');
-
-    rsvpBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      popup.classList.remove('hidden');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      popup.classList.add('hidden');
-    });
-
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) popup.classList.add('hidden');
-    });
-  </script>
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) popup.classList.add('hidden');
+        });
+    </script>
 </body>
+
 </html>
