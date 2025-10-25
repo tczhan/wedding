@@ -142,7 +142,11 @@ nav a:hover {
 .slides {
     display: flex;
     width: 300%;
-    animation: slide 12s infinite;
+    animation: slide 45s infinite linear;
+}
+
+.slider:hover .slides {
+    animation-play-state: paused;
 }
 
 .slides img {
@@ -157,11 +161,23 @@ nav a:hover {
         transform: translateX(0);
     }
 
+    20% {
+        transform: translateX(0);
+    }
+
     33% {
         transform: translateX(-100%);
     }
 
+    53% {
+        transform: translateX(-100%);
+    }
+
     66% {
+        transform: translateX(-200%);
+    }
+
+    86% {
         transform: translateX(-200%);
     }
 
