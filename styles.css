@@ -130,29 +130,42 @@ nav a:hover {
 }
 
 .slider {
-  width: 100%;
-  max-width: 800px;
-  height: 450px;
-  margin: 2rem auto;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .slides {
-  display: flex;
-  width: 300%; /* 3 images → 3x width */
-  animation: slide 12s infinite;
+    display: flex;
+    width: 300%;
+    animation: slide 12s infinite;
 }
 
 .slides img {
-  width: 100%;
-  object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: #000;
 }
 
 @keyframes slide {
-  0% { transform: translateX(0); }
-  33% { transform: translateX(-100%); }
-  66% { transform: translateX(-200%); }
-  100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    33% {
+        transform: translateX(-100%);
+    }
+
+    66% {
+        transform: translateX(-200%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
